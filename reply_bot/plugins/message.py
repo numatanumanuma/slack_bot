@@ -17,12 +17,15 @@ def weather_reply(message):
     weathers = weather.get_weather(city_number)
     w = weathers['forecasts'][0]
     message.reply('今日の天気は' + w['telop'] + 'だよ。\n' + w['image']['url'])
-
 @respond_to('.*明日の天気.*')
 def weather_reply(message):
     weathers = weather.get_weather(city_number)
     w = weathers['forecasts'][1]
     message.reply('明日の天気は' + w['telop'] + 'だよ。\n' + w['image']['url'])
+@respond_to('^天気.*')
+def weather_error(message):
+    message.reply('天気が知りたけりゃ、「今日の」「明日の」をつけてくれい')
+    message.react('thinking_face')
 
 @respond_to('(.*)って[何|なに].*')
 def wiki_reply(message, word):
