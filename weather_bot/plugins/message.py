@@ -17,7 +17,6 @@ def greeting_1(message):
     message.reply('今日の天気は' + w['forecasts'][0]['telop'] + 'だよ。')
  
 # メンションなしに反応
-@listen_to('.*天気.*')
+@listen_to('.*OKD.*')
 def greeting_2(message):
-    w = weather.get_weather(city_number)
-    message.reply('今日の天気は' + w['forecasts'][0]['telop'] + 'だよ')
+    message.reply('呼んだ？')
