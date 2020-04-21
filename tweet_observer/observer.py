@@ -52,6 +52,10 @@ class Observer:
         分離予定
         """
         status = self.getLatestTweet()
-        comment = status.text + '\nhttps://twitter.com/' + self.screen_name + '/status/' + status.id_str
+        comment = status.text
+        index = comment.find('https://t.co/')
+        comment = comment[:index]
+        # 画像が付いていると二重になってしまうため画像のurlを削除
+        comment += '\nhttps://twitter.com/' + self.screen_name + '/status/' + status.id_str
         print(comment)
         return comment
