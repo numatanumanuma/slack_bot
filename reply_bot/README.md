@@ -1,6 +1,9 @@
-# weather_bot
+# reply_bot
 
-練習
+~~~
+pip3 install python-dotenv
+pip3 install wikipedia
+~~~
 
 ## 天気情報
 
