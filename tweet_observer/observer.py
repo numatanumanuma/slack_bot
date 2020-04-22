@@ -39,7 +39,8 @@ class Observer:
         status = self.getLatestTweet()
         now_tweet = status.text
 
-        if latest_tweet != now_tweet:
+        # リツイートはスルー
+        if latest_tweet != now_tweet and now_tweet[:2] != 'RT':
             with open(self.tmp_path, 'w', encoding='utf-8') as f:
                 f.write(now_tweet)
             return True

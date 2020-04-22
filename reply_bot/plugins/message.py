@@ -27,8 +27,8 @@ def weather_error(message):
     message.reply('天気が知りたけりゃ、「今日の」「明日の」をつけてくれい')
     message.react('thinking_face')
 
-@respond_to('(.*)って[何|なに].*')
-def wiki_reply(message, word):
+@respond_to('(.*)って(何|なに).*')
+def wiki_reply(message, word, what):
     wiki = Wikipedia(word)
     if wiki.is_exists():
         summary = wiki.get_summary(1)
@@ -37,8 +37,8 @@ def wiki_reply(message, word):
         message.reply('ぐぐれかす(曖昧すぎるか言葉が意味不明です)')
 
 # メンションなしに反応
-@listen_to('.*[OKD|okd].*')
-def greeting(message):
+@listen_to('.*(OKD|okd).*')
+def greeting(message, okd):
     message.reply('呼んだ？')
 
 @listen_to('.*寿司.*')
