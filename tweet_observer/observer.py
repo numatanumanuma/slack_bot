@@ -39,8 +39,8 @@ class Observer:
         status = self.getLatestTweet()
         now_tweet = status.text
 
-        # リツイートはスルー
-        if latest_tweet != now_tweet and now_tweet[:2] != 'RT':
+        # リツイート, リプライはスルー
+        if latest_tweet != now_tweet and now_tweet[:2] != 'RT' and now_tweet[0] != '@':
             with open(self.tmp_path, 'w', encoding='utf-8') as f:
                 f.write(now_tweet)
             return True
@@ -55,7 +55,8 @@ class Observer:
         status = self.getLatestTweet()
         comment = status.text
         index = comment.find('https://t.co/')
-        comment = comment[:index]
+        if index != -1:
+            comment = comment[:index]
         # 画像が付いていると二重になってしまうため画像のurlを削除
         comment += '\nhttps://twitter.com/' + self.screen_name + '/status/' + status.id_str
         print(comment)
