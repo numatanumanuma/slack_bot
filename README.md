@@ -1,7 +1,7 @@
 # slack_bot
 
 ~~~
-sudo pip3 install slackbot
+pip3 install slackbot
 ~~~
 
 test
